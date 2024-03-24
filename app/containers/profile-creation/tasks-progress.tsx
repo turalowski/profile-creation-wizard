@@ -4,12 +4,20 @@ import {
   ProgressOuter,
 } from '@/app/components/ui/progress';
 
-export function TasksProgress({ value }: { value: number }) {
+type Props = {
+  value: number;
+};
+
+/* Component to show status of completed tasks in percentage */
+export const TasksProgress: React.FC<Props> = ({ value }) => {
   return (
-    <ProgressOuter >
-      <ProgressInner aria-label='Normalized value of completed tasks in percentage' value={value}>
+    <ProgressOuter>
+      <ProgressInner
+        aria-label="Normalized value of completed tasks in percentage"
+        value={value}
+      >
         <ProgressLabel />
       </ProgressInner>
     </ProgressOuter>
   );
-}
+};

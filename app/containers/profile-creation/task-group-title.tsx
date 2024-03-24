@@ -1,16 +1,8 @@
-import {
-  Accordion,
-  AccordionItem,
-  AccordionContent,
-  AccordionHeader,
-} from '@/app/components/ui/accordion';
 import { TaskIcon } from '../../components/ui/icons';
-import { TaskGroupType, ToggleTaskChecked } from '@/app/utils/types';
-import { Task } from './task';
 
 type Props = {
-    remainingTasksCount: number;
-    name: string;
+  remainingTasksCount: number;
+  name: string;
 };
 export const TaskGroupTitle: React.FC<Props> = props => {
   const { name, remainingTasksCount } = props;

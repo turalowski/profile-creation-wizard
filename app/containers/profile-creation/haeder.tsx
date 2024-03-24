@@ -1,5 +1,3 @@
-'use client';
-
 import { TasksProgress } from './tasks-progress';
 import { Heading } from '../../components/ui/heading';
 

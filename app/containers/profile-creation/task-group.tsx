@@ -1,12 +1,9 @@
 import {
-  Accordion,
   AccordionItem,
   AccordionContent,
   AccordionHeader,
 } from '@/app/components/ui/accordion';
-import { TaskIcon } from '../../components/ui/icons';
 import { TaskGroupType, ToggleTaskChecked } from '@/app/utils/types';
-import { Task } from './task';
 import { TaskGroupTitle } from './task-group-title';
 import { Tasks } from './tasks';
 
@@ -22,7 +19,7 @@ export const TaskGroup: React.FC<Props> = props => {
   const remainingTasksCount = remainingTasks.length;
 
   return (
-    <AccordionItem value={String(name)} key={name}>
+    <AccordionItem value={name} key={name}>
       <AccordionHeader>
         <TaskGroupTitle name={name} remainingTasksCount={remainingTasksCount} />
       </AccordionHeader>

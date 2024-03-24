@@ -1,12 +1,5 @@
-import {
-  Accordion,
-  AccordionItem,
-  AccordionContent,
-  AccordionHeader,
-} from '@/app/components/ui/accordion';
-import { TaskIcon } from '../../components/ui/icons';
+import { Accordion } from '@/app/components/ui/accordion';
 import { TaskGroupType, ToggleTaskChecked } from '@/app/utils/types';
-import { Task } from './task';
 import { TaskGroup } from './task-group';
 
 type Props = {

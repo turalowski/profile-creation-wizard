@@ -4,11 +4,11 @@ import { ArrowDownIcon, ArrowUpIcon } from '../icons';
 import {
   AccordionProvider,
   useAccordionContext,
-} from '@/app/contexts/accordion';
+} from '@/app/components/ui/accordion/accordion.context';
 import {
   AccordionItemProvider,
   useAccordionItemContext,
-} from '@/app/contexts/accordion-item';
+} from '@/app/components/ui/accordion/accordion-item.context';
 
 export type DivElementProps = React.HTMLAttributes<HTMLDivElement>
 

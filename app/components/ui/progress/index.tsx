@@ -1,5 +1,5 @@
 import React, { useEffect } from 'react';
-import { ProgressProvider, useProgressContext } from '@/app/contexts/Progress';
+import { ProgressProvider, useProgressContext } from '@/app/components/ui/progress/progress.context';
 import clsx from 'clsx';
 
 type HTMLElement = React.HTMLAttributes<HTMLDivElement>

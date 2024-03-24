@@ -3,9 +3,11 @@ import { TaskGroupType, ToggleTaskChecked } from '@/app/utils/types';
 import { TaskGroup } from './task-group';
 
 type Props = {
-  taskGroups: TaskGroupType[];
-  toggleTaskChecked: ToggleTaskChecked;
+  taskGroups: TaskGroupType[]; // task groups
+  toggleTaskChecked: ToggleTaskChecked; // function to toggle checked state of task
 };
+
+/* Component to show task groups */
 export const TaskGroups: React.FC<Props> = props => {
   const { taskGroups, toggleTaskChecked } = props;
 

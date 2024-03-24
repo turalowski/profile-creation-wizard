@@ -5,7 +5,8 @@ import { calculateNormalizedSum } from '@/app/utils/tasks';
 import { TaskGroups } from './task-groups';
 import { Header } from './haeder';
 
-export function ProfileCreation() {
+/* Component to show User creation wizard */
+export const ProfileCreation: React.FC = () => {
   const { taskGroups, toggleTaskChecked } = useTaskGroups();
   const progress: number = calculateNormalizedSum(taskGroups);
   return (
@@ -17,4 +18,4 @@ export function ProfileCreation() {
       />
     </section>
   );
-}
+};

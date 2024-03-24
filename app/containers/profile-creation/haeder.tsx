@@ -5,6 +5,7 @@ type Props = {
   progress: number;
 };
 
+/* Component to show header of wizard */
 export const Header: React.FC<Props> = ({ progress }) => {
   return (
     <div className="px-6 py-4 space-y-3">

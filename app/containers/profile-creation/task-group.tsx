@@ -8,15 +8,17 @@ import { TaskGroupTitle } from './task-group-title';
 import { Tasks } from './tasks';
 
 type Props = {
-  groupIndex: number;
-  taskGroup: TaskGroupType;
-  toggleTaskChecked: ToggleTaskChecked;
+  groupIndex: number; // index of task group
+  taskGroup: TaskGroupType; // task group
+  toggleTaskChecked: ToggleTaskChecked; // function to toggle checked state of task
 };
+
+/* Component to show task group */
 export const TaskGroup: React.FC<Props> = props => {
   const { groupIndex, taskGroup, toggleTaskChecked } = props;
   const { tasks, name } = taskGroup;
-  const remainingTasks = tasks.filter(task => !task.checked);
-  const remainingTasksCount = remainingTasks.length;
+  /* Count of uncompleted tasks */
+  const remainingTasksCount = tasks.filter(task => !task.checked).length;
 
   return (
     <AccordionItem value={name} key={name}>

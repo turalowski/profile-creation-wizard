@@ -1,6 +1,6 @@
 'use client';
 
-import { Progress } from './progress';
+import { TasksProgress } from './tasks-progress';
 import { Heading } from '../../components/ui/heading';
 
 type Props = {
@@ -13,7 +13,7 @@ export const Header: React.FC<Props> = ({ progress }) => {
       <Heading aria-label="Information about tasks for user profile creation">
         Lodgify grouped tasks
       </Heading>
-      <Progress value={progress} />
+      <TasksProgress value={progress} />
     </div>
   );
 };

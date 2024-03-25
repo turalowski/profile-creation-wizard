@@ -1,8 +1,12 @@
 import React, { useEffect } from 'react';
-import { ProgressProvider, useProgressContext } from '@/app/components/ui/progress/progress.context';
+import {
+  ProgressProvider,
+  useProgressContext,
+} from '@/app/components/ui/progress/progress.context';
 import clsx from 'clsx';
 
-type HTMLElement = React.HTMLAttributes<HTMLDivElement>
+type HTMLElement = React.HTMLAttributes<HTMLDivElement>;
+type SpanElementProps = React.HTMLAttributes<HTMLSpanElement>;
 
 interface ProgressProps {
   value: number;
@@ -81,7 +85,7 @@ const ProgressInner: React.FC<ProgressProps & HTMLElement> = ({
  * It displays the current progress percentage.
  * It should we wrapped with ProgressOuter component.
  */
-const ProgressLabel: React.FC<Omit<ProgressProps, 'value' | 'children'>> = ({
+const ProgressLabel: React.FC<Omit<SpanElementProps & ProgressProps, 'value' | 'children'>> = ({
   className,
   ...rest
 }) => {
@@ -91,10 +95,14 @@ const ProgressLabel: React.FC<Omit<ProgressProps, 'value' | 'children'>> = ({
     <span
       role="presentation"
       aria-hidden="true"
-      className={clsx('p-2', 'text-white text-base leading-5 font-light ', className)}
+      className={clsx(
+        'p-2',
+        'text-white text-base leading-5 font-light ',
+        className
+      )}
       {...rest}
     >
-      {value > 5 ? `${value}%` : null}
+      {value}%
     </span>
   );
 };

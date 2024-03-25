@@ -15,7 +15,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
   ...rest
 }) => {
   return (
-    <div className="flex gap-2 items-center justify-center ">
+    <div className="flex gap-2 items-center justify-center">
       <input
         className={clsx(
           'peer relative appearance-none shrink-0 w-4 h-4 border-2 rounded-[4px] bg-white border-[#999999]',

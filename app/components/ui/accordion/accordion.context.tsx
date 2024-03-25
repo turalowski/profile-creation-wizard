@@ -1,33 +1,32 @@
 import React, { createContext, useContext, useState } from 'react';
 
 export type AccordionContextType = {
-  active: string | null; // The current progress value
-  setActive: (newActive: string | null) => void; // Function to set the progress value
+  active: string | null; // Value of open accordion item
+  setActive: (newActive: string | null) => void; // Function to set new open accordion item
 };
 
 type AccordionProviderProps = {
-  initialActive?: string; // Initial value for progress
-  children: React.ReactNode; // Child components
+  children: React.ReactNode; // child components
 };
 
 const AccordionContext = createContext<AccordionContextType | undefined>(
   undefined
 );
 
-// Custom hook to access the ProgressContext
+// Custom hook to access the AccordionContext
 export const useAccordionContext = (): AccordionContextType => {
   const context = useContext(AccordionContext);
   if (!context) {
-    throw new Error('Higher order component should be wrapped with ProgressProvider');
+    throw new Error('Higher order component should be wrapped with Accordion Provider');
   }
   return context;
 };
 
-// Provider component to manage the progress state
+// Provider component to manage the accordion state
 export const AccordionProvider: React.FC<AccordionProviderProps> = ({
   children,
 }) => {
-  // State to manage the progress value
+  // State to manage the accordion value
   const [active, setActive] = useState<string | null>(null);
 
   return (

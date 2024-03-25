@@ -10,15 +10,15 @@ import {
   useAccordionItemContext,
 } from '@/app/components/ui/accordion/accordion-item.context';
 
-export type DivElementProps = React.HTMLAttributes<HTMLDivElement>
-
-interface AccordionProps {
+interface AccordionElementProps extends React.HTMLAttributes<HTMLDivElement>{
   value: string;
   className?: string;
   children: React.ReactNode;
-}
+};
+interface ButtonElementProps extends React.HTMLAttributes<HTMLButtonElement>{}
 
-const Accordion: React.FC<Omit<DivElementProps & AccordionProps, 'value'>> = ({
+
+const Accordion: React.FC<Omit<AccordionElementProps, 'value'>> = ({
   className,
   children,
   ...rest
@@ -32,7 +32,7 @@ const Accordion: React.FC<Omit<DivElementProps & AccordionProps, 'value'>> = ({
   );
 };
 
-const AccordionItem: React.FC<DivElementProps & AccordionProps> = ({
+const AccordionItem: React.FC<AccordionElementProps> = ({
   value,
   className,
   children,
@@ -52,7 +52,7 @@ const AccordionItem: React.FC<DivElementProps & AccordionProps> = ({
   );
 };
 
-const AccordionHeader: React.FC<Omit<AccordionProps, 'value'>> = ({
+const AccordionHeader: React.FC<Omit<ButtonElementProps, 'value'>> = ({
   className,
   children,
   ...rest
@@ -98,7 +98,7 @@ const AccordionHeader: React.FC<Omit<AccordionProps, 'value'>> = ({
   );
 };
 
-const AccordionContent: React.FC<Omit<AccordionProps, 'value'>> = ({
+const AccordionContent: React.FC<Omit<AccordionElementProps, 'value'>> = ({
   className,
   children,
   ...rest

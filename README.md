@@ -126,3 +126,14 @@ Main component is stored under `containers/profile-creation`. I believe after re
 ### Visual representation of components tree
 
 ![Component tree](/component-tree.png)
+
+### Accessibility
+
+I did my best to follow following accessibility rules:
+
+* Used `aria-*` HTML attributes on necessary places
+* Semantic HTML and proper HTML elements usage
+* Labeling, Focus control and key bindings
+
+At the end, used ScreenReader chrome extension to ensure that provided labels and `aria-*` tags works as expected.
+

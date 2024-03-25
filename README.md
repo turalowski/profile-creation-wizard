@@ -109,7 +109,7 @@ Primitive UI elements stored under `/app/components/ui` folder. Following elemen
 
 ### Profile Creation Wizard
 
-Main component is stored under `containers/profile-creation`. I believe after release of app router of Next.JS `container` folder is not relevant anymore, but as scoope of this task for React, I preffered to follow old fashion folder structure. It includes following components:
+Main component is stored under `containers/profile-creation`. I believe after release of app router of Next.JS `container` folder is not relevant anymore, but as scope of this task is only React, I preferred to store Wizard element under `/containers` folder. It includes following components:
 
 - Header
   - Heading

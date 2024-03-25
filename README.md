@@ -10,15 +10,13 @@ This is a technical assesntment for Frontend Engineer role at [Lodgify](https://
 
 ## Development Notes
 
-
 I avoided using Next.JS features such as server actions and server components. That's why I added `use client` tag on top of `app/page.tsx` to render the page as SPA.
 
 This technical task primarily emphasizes coding skills and implementation rather than branching strategies. As such, no specific branching strategy is applied, and the default branch is `main`.
 
 ## Description
 
-This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Next.JS is a full-stack React framework and it's [one of the recommended tools](https://react.dev/learn/start-a-new-react-project) to create a new React application. 
-
+This is a [Next.js](https://nextjs.org/) project bootstrapped with [`create-next-app`](https://github.com/vercel/next.js/tree/canary/packages/create-next-app). Next.JS is a full-stack React framework and it's [one of the recommended tools](https://react.dev/learn/start-a-new-react-project) to create a new React application.
 
 ## Running the application
 
@@ -61,7 +59,6 @@ npm run build
 
 The production-ready assets will be generated in the `.next` directory.
 
-
 ### Previewing the Production Build
 
 After building the application, you may want to preview the production build locally. You can achieve this by running:
@@ -79,33 +76,53 @@ This command will serve the production build locally, allowing you to preview th
 
 Following naming rules are followed across the project:
 
-* *kebeb-case* - used for all files across the repo.
-* *camelCase* - used for all variable and function names (except components).
-* *PascalCase* - used for all component names.
-* *SCREAMING_SNAKE_CASE* - used for strictly defined constants (such as `API_ENDPOINT` variable)
+- _kebeb-case_ - used for all files across the repo.
+- _camelCase_ - used for all variable and function names (except components).
+- _PascalCase_ - used for all component names.
+- _SCREAMING_SNAKE_CASE_ - used for strictly defined constants (such as `API_ENDPOINT` variable)
 
-### UI components
+### Primitive components
 
 Primitive UI elements stored under `/app/components/ui` folder. Following elements are created for this task:
 
-* Accordion
-    * Accordion - Container of accordion items
-    * AccordionItem - Accordion item with header and content
-    * AccordionHeader - Accordion header to toggle content area
-    * AccordionContent - Accordion content to show the data
-* Checkbox
-    * reusable and customized `input type="checkbox" />` tag
-* Heading
-    * reusable and customized `label` tag
-* Label
-    * reusable and customized `label` tag
-* Progress
-    * ProgressOuter - Container of progress bar
-    * ProgressInner - Filling part of progress bar
-    * ProgressLabel - Indicator for urrent state of progress bar
-    * ProgressProvider and ProgressContext - React Context to share state across different parts of Progress bar
-* Icons
-    * TaskIcon - task icon for accordion header
-    * ArrowUpIcon - arrow up icon to use on closed state of accordion item
-    * ArrowDownIcon - arrow down icon to use on open state of accordion item
-    * TickIcon - checked state identifier for checkbox element
+- Accordion
+  - Accordion - Container of accordion items
+  - AccordionItem - Accordion item with header and content
+  - AccordionHeader - Accordion header to toggle content area
+  - AccordionContent - Accordion content to show the data
+- Checkbox
+  - reusable and customized `input type="checkbox" />` tag
+- Heading
+  - reusable and customized `label` tag
+- Label
+  - reusable and customized `label` tag
+- Progress
+  - ProgressOuter - Container of progress bar
+  - ProgressInner - Filling part of progress bar
+  - ProgressLabel - Indicator for urrent state of progress bar
+  - ProgressProvider and ProgressContext - React Context to share state across different parts of Progress bar
+- Icons
+  - TaskIcon - task icon for accordion header
+  - ArrowUpIcon - arrow up icon to use on closed state of accordion item
+  - ArrowDownIcon - arrow down icon to use on open state of accordion item
+  - TickIcon - checked state identifier for checkbox element
+
+### Profile Creation Wizard
+
+Main component is stored under `containers/profile-creation`. I believe after release of app router of Next.JS `container` folder is not relevant anymore, but as scoope of this task for React, I preffered to follow old fashion folder structure. It includes following components:
+
+- Header
+  - Heading
+  - Progress
+- TaskGroups
+  - Accordion
+    - TaskGroup
+      - TaskGroupTitle
+      - Tasks
+        - Task
+          - Checkbox
+          - Label
+
+### Visual representation of components tree
+
+![Component tree](/component-tree.png)

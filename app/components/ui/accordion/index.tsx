@@ -106,7 +106,7 @@ const AccordionHeader: React.FC<Omit<AccordionHeaderProps, 'value'>> = ({
       onClick={onClick}
       {...rest}
     >
-      <h3 className={clsx('flex items-center gap-3', className)}>{children}</h3>
+      <h3 className={clsx('flex text-primary-text items-center gap-3', className)}>{children}</h3>
       <span className="flex items-center gap-3">
         <span className="text-secondaryText">{isOpen ? 'Hide' : 'Show'}</span>
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}

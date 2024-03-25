@@ -9,7 +9,7 @@ export function Heading({
   ...rest
 }: HeadingProps): JSX.Element {
   return (
-    <h1 className={clsx('text-2xl leading-8 font-medium', className)} {...rest}>
+    <h1 className={clsx('text-2xl text-primaryText leading-8 font-medium', className)} {...rest}>
       {children}
     </h1>
   );

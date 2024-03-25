@@ -72,3 +72,40 @@ npm run start
 ```
 
 This command will serve the production build locally, allowing you to preview the application as it would appear in a production environment. The application will be served on port `3000` by default. If port 3000 is already in use, the server will attempt to use port 3001, and so on.
+
+## Project Structure
+
+### Naming convention
+
+Following naming rules are followed across the project:
+
+* *kebeb-case* - used for all files across the repo.
+* *camelCase* - used for all variable and function names (except components).
+* *PascalCase* - used for all component names.
+* *SCREAMING_SNAKE_CASE* - used for strictly defined constants (such as `API_ENDPOINT` variable)
+
+### UI components
+
+Primitive UI elements stored under `/app/components/ui` folder. Following elements are created for this task:
+
+* Accordion
+    * Accordion - Container of accordion items
+    * AccordionItem - Accordion item with header and content
+    * AccordionHeader - Accordion header to toggle content area
+    * AccordionContent - Accordion content to show the data
+* Checkbox
+    * reusable and customized `input type="checkbox" />` tag
+* Heading
+    * reusable and customized `label` tag
+* Label
+    * reusable and customized `label` tag
+* Progress
+    * ProgressOuter - Container of progress bar
+    * ProgressInner - Filling part of progress bar
+    * ProgressLabel - Indicator for urrent state of progress bar
+    * ProgressProvider and ProgressContext - React Context to share state across different parts of Progress bar
+* Icons
+    * TaskIcon - task icon for accordion header
+    * ArrowUpIcon - arrow up icon to use on closed state of accordion item
+    * ArrowDownIcon - arrow down icon to use on open state of accordion item
+    * TickIcon - checked state identifier for checkbox element

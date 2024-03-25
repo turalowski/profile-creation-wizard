@@ -1,3 +1,4 @@
+import clsx from 'clsx';
 import React, { SVGProps } from 'react';
 
 export const TaskIcon: React.FC<SVGProps<SVGSVGElement>> = ({ ...rest }) => (
@@ -31,15 +32,12 @@ export const ArrowDownIcon: React.FC<SVGProps<SVGSVGElement>> = ({
   >
     <path
       d="M9.84733 0.152625C9.65549 -0.0459829 9.33897 -0.0514761 9.14036 0.140357L4.99387 4.2869L0.847328 0.140418C0.653602 -0.0467153 0.346412 -0.0467153 0.152625 0.140418C-0.0459829 0.332252 -0.0514761 0.64878 0.140357 0.847389L4.64036 5.34739C4.73399 5.44132 4.86124 5.49406 4.99387 5.49387C5.1265 5.494 5.2537 5.44132 5.34733 5.34739L9.84733 0.847389C10.0345 0.653602 10.0345 0.346412 9.84733 0.152625Z"
-      fill='currentColor'
-
+      fill="currentColor"
     />
   </svg>
 );
 
-export const ArrowUpIcon: React.FC<SVGProps<SVGSVGElement>> = ({
-  ...rest
-}) => (
+export const ArrowUpIcon: React.FC<SVGProps<SVGSVGElement>> = ({ ...rest }) => (
   <svg
     width="10"
     height="6"
@@ -50,7 +48,32 @@ export const ArrowUpIcon: React.FC<SVGProps<SVGSVGElement>> = ({
   >
     <path
       d="M9.84737 4.64655L5.34737 0.146545C5.34731 0.146484 5.34743 0.146606 5.34737 0.146545C5.15211 -0.048584 4.83553 -0.0487061 4.6404 0.146545L0.140396 4.64655C-0.0467987 4.84027 -0.0467987 5.14746 0.140396 5.34125C0.33223 5.53986 0.648758 5.54535 0.847366 5.35352L4.99385 1.20697L9.14034 5.35352C9.23396 5.44745 9.36122 5.50018 9.49385 5.5C9.62636 5.5 9.75349 5.44733 9.84724 5.35364C10.0425 5.15839 10.0426 4.8418 9.84737 4.64655Z"
-      fill='currentColor'
+      fill="currentColor"
+    />
+  </svg>
+);
+
+export const TickIcon: React.FC<SVGProps<SVGSVGElement>> = ({
+  className,
+  ...rest
+}) => (
+  <svg
+    className={clsx(
+      'absolute pointer-events-none hidden peer-checked:block stroke-whiteoutline-none text-[white]',
+      className
+    )}
+    width="10"
+    height="8"
+    viewBox="0 0 10 8"
+    fill="currentColor"
+    xmlns="http://www.w3.org/2000/svg"
+    {...rest}
+  >
+    <path
+      fillRule="evenodd"
+      clipRule="evenodd"
+      d="M3.49574 6.10067L0.888005 3.30201L0 4.24832L3.49574 8L10 0.946309L9.11825 0L3.49574 6.10067Z"
+      fill="currentColor"
     />
   </svg>
 );

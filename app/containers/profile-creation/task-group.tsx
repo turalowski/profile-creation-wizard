@@ -28,6 +28,7 @@ export const TaskGroup: React.FC<Props> = props => {
       <AccordionContent>
         <Tasks
           tasks={tasks}
+          groupName={name}
           groupIndex={groupIndex}
           toggleTaskChecked={toggleTaskChecked}
         />

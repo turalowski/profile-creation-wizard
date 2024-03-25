@@ -10,15 +10,16 @@ import {
   useAccordionItemContext,
 } from '@/app/components/ui/accordion/accordion-item.context';
 
-interface AccordionElementProps extends React.HTMLAttributes<HTMLDivElement>{
+interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string;
   className?: string;
   children: React.ReactNode;
-};
-interface ButtonElementProps extends React.HTMLAttributes<HTMLButtonElement>{}
+}
 
-
-const Accordion: React.FC<Omit<AccordionElementProps, 'value'>> = ({
+/**
+ * Accordion component.
+ */
+const Accordion: React.FC<Omit<AccordionProps, 'value'>> = ({
   className,
   children,
   ...rest
@@ -32,7 +33,16 @@ const Accordion: React.FC<Omit<AccordionElementProps, 'value'>> = ({
   );
 };
 
-const AccordionItem: React.FC<AccordionElementProps> = ({
+interface AccordionItemProps extends React.HTMLAttributes<HTMLDivElement> {
+  value: string;
+  className?: string;
+  children: React.ReactNode;
+}
+/**
+ * Accordion Item component.
+ *
+ */
+const AccordionItem: React.FC<AccordionItemProps> = ({
   value,
   className,
   children,
@@ -43,7 +53,7 @@ const AccordionItem: React.FC<AccordionElementProps> = ({
       <div
         role="region"
         aria-labelledby={`accordion-header-${value}`}
-        className="border-b"
+        className={clsx('border-b', className)}
         {...rest}
       >
         {children}
@@ -52,8 +62,19 @@ const AccordionItem: React.FC<AccordionElementProps> = ({
   );
 };
 
-const AccordionHeader: React.FC<Omit<ButtonElementProps, 'value'>> = ({
+interface AccordionHeaderProps extends React.HTMLAttributes<HTMLButtonElement> {
+  value: string;
+  className?: string;
+  onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; // Allow the parent to pass onClick handler
+  children: React.ReactNode;
+}
+
+/**
+ * Accordion Header component.
+ */
+const AccordionHeader: React.FC<Omit<AccordionHeaderProps, 'value'>> = ({
   className,
+  onClick: externalOnClick, // Destructure onClick prop
   children,
   ...rest
 }) => {
@@ -61,23 +82,20 @@ const AccordionHeader: React.FC<Omit<ButtonElementProps, 'value'>> = ({
   const { value } = useAccordionItemContext();
   const isOpen = active === value;
 
+  // Toggle the accordion item.
   const toggleItem = () => {
+    /* If currently is active, close it */
     if (isOpen) {
       setActive(null);
     } else {
+      /* Otherwise open */
       setActive(value);
     }
   };
-
-  const handleKeyDown = (e: React.KeyboardEvent<HTMLButtonElement>): void => {
-    if (e.code === 'Enter' || e.code === 'Space') {
-      e.preventDefault();
-      toggleItem();
-    }
-  };
-
-  const onClick = () => {
+  const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     toggleItem();
+    externalOnClick?.(event); // External onClick handler, if provided
+
   };
 
   return (
@@ -86,10 +104,9 @@ const AccordionHeader: React.FC<Omit<ButtonElementProps, 'value'>> = ({
       aria-controls={`accordion-content-${value}`}
       className={clsx('flex justify-between', 'p-6 w-full', className)}
       onClick={onClick}
-      onKeyDown={handleKeyDown}
       {...rest}
     >
-      <h3 className={clsx('flex items-center gap-3')}>{children}</h3>
+      <h3 className={clsx('flex items-center gap-3', className)}>{children}</h3>
       <span className="flex items-center gap-3">
         <span className="text-secondaryText">{isOpen ? 'Hide' : 'Show'}</span>
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
@@ -98,7 +115,17 @@ const AccordionHeader: React.FC<Omit<ButtonElementProps, 'value'>> = ({
   );
 };
 
-const AccordionContent: React.FC<Omit<AccordionElementProps, 'value'>> = ({
+
+interface AccordionContentProps extends React.HTMLAttributes<HTMLDivElement> {
+  value: string;
+  className?: string;
+  children: React.ReactNode;
+}
+
+/**
+ * Accordion Content component.
+ */
+const AccordionContent: React.FC<Omit<AccordionContentProps, 'value'>> = ({
   className,
   children,
   ...rest
@@ -114,10 +141,7 @@ const AccordionContent: React.FC<Omit<AccordionElementProps, 'value'>> = ({
     <div
       aria-hidden="false"
       role="region"
-      className={clsx(
-        'p-6',
-        'overflow-hidden transition-max-height duration-10000 ease-in-out'
-      )}
+      className={clsx('p-6', className)}
       {...rest}
     >
       {children}

@@ -12,17 +12,27 @@ export const TaskGroupTitle: React.FC<Props> = props => {
   const allTasksCompleted = remainingTasksCount === 0;
 
   return (
-    <>
-      <TaskIcon className={clsx(allTasksCompleted && 'text-success')} />
-      <span className={clsx(allTasksCompleted && 'text-success')}>{name}</span>
+    <div className="flex items-center gap-3">
+      <TaskIcon
+        aria-hidden={true}
+        className={clsx({ 'text-success': allTasksCompleted })}
+      />
       <span
-        className={clsx(
-          'w-6 h-6  text-white rounded-full',
-          allTasksCompleted ? 'bg-success' : 'bg-red-700'
-        )}
+        className={clsx({
+          'text-success': allTasksCompleted,
+        })}
+      >
+        {name}
+      </span>
+      <span
+        className={clsx('w-6 h-6 rounded-full', 'text-white bg-red-700', {
+          'bg-success': allTasksCompleted,
+        })}
+        role="status"
+        aria-live="polite"
       >
         {remainingTasksCount}
       </span>
-    </>
+    </div>
   );
 };

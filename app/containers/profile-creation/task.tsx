@@ -26,7 +26,11 @@ export const Task: React.FC<Props> = ({
 
   return (
     <div className="flex items-center gap-4" key={id}>
-      <Checkbox id={id} checked={task.checked} onChange={handleCheckClick} />
+      <Checkbox
+        id={id}
+        checked={task.checked}
+        onChange={handleCheckClick}
+      />
       <Label htmlFor={id}>{task.description}</Label>
     </div>
   );

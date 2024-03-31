@@ -25,6 +25,7 @@ const Checkbox: React.FC<CheckboxProps> = ({
           className
         )}
         type="checkbox"
+        aria-checked={rest['checked']}
         {...rest}
       />
       <TickIcon className={tickClassName} />

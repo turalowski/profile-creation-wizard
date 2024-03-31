@@ -95,18 +95,19 @@ const AccordionHeader: React.FC<Omit<AccordionHeaderProps, 'value'>> = ({
   const onClick = (event: React.MouseEvent<HTMLButtonElement>) => {
     toggleItem();
     externalOnClick?.(event); // External onClick handler, if provided
-
   };
 
   return (
     <button
       aria-expanded={isOpen}
-      aria-controls={`accordion-content-${value}`}
+      aria-controls={`accordion-header-${value}`}
       className={clsx('flex justify-between', 'p-6 w-full', className)}
       onClick={onClick}
       {...rest}
     >
-      <h3 className={clsx('flex text-primary-text items-center gap-3', className)}>{children}</h3>
+      <h3 className={clsx('text-primary-text gap-3')}>
+        {children}
+      </h3>
       <span className="flex items-center gap-3">
         <span className="text-secondaryText">{isOpen ? 'Hide' : 'Show'}</span>
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
@@ -114,7 +115,6 @@ const AccordionHeader: React.FC<Omit<AccordionHeaderProps, 'value'>> = ({
     </button>
   );
 };
-
 
 interface AccordionContentProps extends React.HTMLAttributes<HTMLDivElement> {
   value: string;

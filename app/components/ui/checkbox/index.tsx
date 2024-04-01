@@ -2,13 +2,10 @@ import React from 'react';
 import clsx from 'clsx';
 import { TickIcon } from '../icons';
 
-interface CheckboxElement extends React.HTMLAttributes<HTMLInputElement> {
+interface CheckboxProps extends React.HTMLAttributes<HTMLInputElement> {
   checked: boolean;
-}
-type CheckboxProps = CheckboxElement & {
   tickClassName?: string;
-};
-
+}
 const Checkbox: React.FC<CheckboxProps> = ({
   className,
   tickClassName,

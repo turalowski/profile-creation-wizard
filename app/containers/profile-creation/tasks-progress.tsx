@@ -1,8 +1,5 @@
-import {
-  ProgressLabel,
-  ProgressInner,
-  ProgressOuter,
-} from '@/app/components/ui/progress';
+import { ProgressInner, ProgressOuter } from '@/app/components/ui/progress';
+import clsx from 'clsx';
 
 type Props = {
   value: number;
@@ -16,7 +13,13 @@ export const TasksProgress: React.FC<Props> = ({ value }) => {
         value={value}
         aria-label={`Normalized value of completed tasks in percentage. ${value}% of tasks completed`}
       >
-        <ProgressLabel />
+        <span
+          role="presentation"
+          aria-hidden="true"
+          className={clsx('p-2', 'text-white text-base leading-5 font-light ')}
+        >
+          {value}%
+        </span>
       </ProgressInner>
     </ProgressOuter>
   );

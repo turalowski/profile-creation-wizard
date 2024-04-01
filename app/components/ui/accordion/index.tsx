@@ -11,7 +11,6 @@ import {
 } from '@/app/components/ui/accordion/accordion-item.context';
 
 interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
-  value: string;
   className?: string;
   children: React.ReactNode;
 }
@@ -19,7 +18,7 @@ interface AccordionProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Accordion component.
  */
-const Accordion: React.FC<Omit<AccordionProps, 'value'>> = ({
+const Accordion: React.FC<AccordionProps> = ({
   className,
   children,
   ...rest
@@ -63,7 +62,6 @@ const AccordionItem: React.FC<AccordionItemProps> = ({
 };
 
 interface AccordionHeaderProps extends React.HTMLAttributes<HTMLButtonElement> {
-  value: string;
   className?: string;
   onClick?: (event: React.MouseEvent<HTMLButtonElement>) => void; // Allow the parent to pass onClick handler
   children: React.ReactNode;
@@ -72,7 +70,7 @@ interface AccordionHeaderProps extends React.HTMLAttributes<HTMLButtonElement> {
 /**
  * Accordion Header component.
  */
-const AccordionHeader: React.FC<Omit<AccordionHeaderProps, 'value'>> = ({
+const AccordionHeader: React.FC<AccordionHeaderProps> = ({
   className,
   onClick: externalOnClick, // Destructure onClick prop
   children,
@@ -101,13 +99,15 @@ const AccordionHeader: React.FC<Omit<AccordionHeaderProps, 'value'>> = ({
     <button
       aria-expanded={isOpen}
       aria-controls={`accordion-header-${value}`}
-      className={clsx('flex justify-between', 'text-primary-text p-6 w-full', className)}
+      className={clsx(
+        'flex justify-between',
+        'text-primary-text p-6 w-full',
+        className
+      )}
       onClick={onClick}
       {...rest}
     >
-      <h3>
-        {children}
-      </h3>
+      <h3>{children}</h3>
       <span className="flex items-center gap-3">
         <span className="text-secondaryText">{isOpen ? 'Hide' : 'Show'}</span>
         {isOpen ? <ArrowUpIcon /> : <ArrowDownIcon />}
@@ -117,7 +117,6 @@ const AccordionHeader: React.FC<Omit<AccordionHeaderProps, 'value'>> = ({
 };
 
 interface AccordionContentProps extends React.HTMLAttributes<HTMLDivElement> {
-  value: string;
   className?: string;
   children: React.ReactNode;
 }
@@ -125,7 +124,7 @@ interface AccordionContentProps extends React.HTMLAttributes<HTMLDivElement> {
 /**
  * Accordion Content component.
  */
-const AccordionContent: React.FC<Omit<AccordionContentProps, 'value'>> = ({
+const AccordionContent: React.FC<AccordionContentProps> = ({
   className,
   children,
   ...rest

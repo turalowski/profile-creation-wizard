@@ -5,12 +5,9 @@ import {
 } from '@/app/components/ui/progress/progress.context';
 import clsx from 'clsx';
 
-type HTMLElement = React.HTMLAttributes<HTMLDivElement>;
 type SpanElementProps = React.HTMLAttributes<HTMLSpanElement>;
 
-interface ProgressProps {
-  value: number;
-  max?: number;
+interface ProgressOuterProps extends  React.HTMLAttributes<HTMLDivElement>{
   className?: string;
   children: React.ReactNode;
 }
@@ -19,7 +16,7 @@ interface ProgressProps {
  * ProgressOuter component renders the outer container for the progress bar.
  * It wraps the children components and provides progress context.
  */
-const ProgressOuter: React.FC<Omit<ProgressProps & HTMLElement, 'value'>> = ({
+const ProgressOuter: React.FC<ProgressOuterProps> = ({
   className,
   children,
   ...rest
@@ -45,12 +42,18 @@ const ProgressOuter: React.FC<Omit<ProgressProps & HTMLElement, 'value'>> = ({
   );
 };
 
+interface ProgressInnerProps extends  React.HTMLAttributes<HTMLDivElement>{
+  value: number;
+  className?: string;
+  children: React.ReactNode;
+}
+
 /**
  * ProgressInner component renders the inner portion of the progress bar.
  * It receives the current progress value and updates its width accordingly.
  * It should we wrapped with ProgressOuter component.
  */
-const ProgressInner: React.FC<ProgressProps & HTMLElement> = ({
+const ProgressInner: React.FC<ProgressInnerProps> = ({
   value,
   className,
   children,
@@ -83,31 +86,6 @@ const ProgressInner: React.FC<ProgressProps & HTMLElement> = ({
   );
 };
 
-/**
- * ProgressLabel component renders the label for the progress bar.
- * It displays the current progress percentage.
- * It should we wrapped with ProgressOuter component.
- */
-const ProgressLabel: React.FC<Omit<SpanElementProps & ProgressProps, 'value' | 'children'>> = ({
-  className,
-  ...rest
-}) => {
-  const { value } = useProgressContext();
 
-  return (
-    <span
-      role="presentation"
-      aria-hidden="true"
-      className={clsx(
-        'p-2',
-        'text-white text-base leading-5 font-light ',
-        className
-      )}
-      {...rest}
-    >
-      {value}%
-    </span>
-  );
-};
 
-export { ProgressOuter, ProgressInner, ProgressLabel };
+export { ProgressOuter, ProgressInner };

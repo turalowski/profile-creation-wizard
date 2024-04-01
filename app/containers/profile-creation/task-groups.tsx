@@ -14,16 +14,19 @@ export const TaskGroups: React.FC<Props> = props => {
 
   return (
     <Accordion>
-      {taskGroups.map((taskGroup, groupIndex) => (
-        <TaskGroup taskGroup={taskGroup} key={taskGroup.name}>
-          <Tasks
-            tasks={taskGroup.tasks}
-            groupName={taskGroup.name}
-            groupIndex={groupIndex}
-            toggleTaskChecked={toggleTaskChecked}
-          />
-        </TaskGroup>
-      ))}
+      {taskGroups.map((taskGroup, index) => {
+        const { name, tasks } = taskGroup;
+        return (
+          <TaskGroup taskGroup={taskGroup} key={name}>
+            <Tasks
+              tasks={tasks}
+              groupName={name}
+              groupIndex={index}
+              toggleTaskChecked={toggleTaskChecked}
+            />
+          </TaskGroup>
+        );
+      })}
     </Accordion>
   );
 };

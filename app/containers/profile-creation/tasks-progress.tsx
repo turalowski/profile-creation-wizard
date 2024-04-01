@@ -13,8 +13,8 @@ export const TasksProgress: React.FC<Props> = ({ value }) => {
   return (
     <ProgressOuter>
       <ProgressInner
-        aria-label="Normalized value of completed tasks in percentage"
         value={value}
+        aria-label={`Normalized value of completed tasks in percentage. ${value}% of tasks completed`}
       >
         <ProgressLabel />
       </ProgressInner>

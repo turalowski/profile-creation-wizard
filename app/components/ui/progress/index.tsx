@@ -15,30 +15,20 @@ interface ProgressProps {
   children: React.ReactNode;
 }
 
-function getProgressState(value: number | undefined | null, maxValue: number): string {
-  return value == null ? 'indeterminate' : value === maxValue ? 'complete' : 'loading';
-}
-
 /**
  * ProgressOuter component renders the outer container for the progress bar.
  * It wraps the children components and provides progress context.
  */
-const ProgressOuter: React.FC<ProgressProps & HTMLElement> = ({
-  value,
+const ProgressOuter: React.FC<Omit<ProgressProps & HTMLElement, 'value'>> = ({
   className,
   children,
-  max = 100,
   ...rest
 }) => {
   return (
-    <ProgressProvider>
+    <ProgressProvider >
       <div
         aria-valuemin={0}
         aria-valuemax={100}
-        aria-valuenow={isNaN(value) ? undefined : value}
-        aria-valuetext={`${value}%`}
-        data-state={getProgressState(value, max)}
-        data-value={value ?? undefined}
         className={clsx(
           'rounded-full',
           'bg-[#e6fdf9] ',
@@ -84,10 +74,8 @@ const ProgressInner: React.FC<ProgressProps & HTMLElement> = ({
       )}
       style={{ width: `${currentValue}%` }}
       role="progressbar"
-      data-state={getProgressState(currentValue, 100)}
-      data-value={currentValue ?? undefined}
-      data-max={100}
-
+      aria-valuenow={isNaN(value) ? undefined : value}
+      aria-valuetext={`${value}%`}
       {...rest}
     >
       {children}

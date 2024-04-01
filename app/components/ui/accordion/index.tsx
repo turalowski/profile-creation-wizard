@@ -101,11 +101,11 @@ const AccordionHeader: React.FC<Omit<AccordionHeaderProps, 'value'>> = ({
     <button
       aria-expanded={isOpen}
       aria-controls={`accordion-header-${value}`}
-      className={clsx('flex justify-between', 'p-6 w-full', className)}
+      className={clsx('flex justify-between', 'text-primary-text p-6 w-full', className)}
       onClick={onClick}
       {...rest}
     >
-      <h3 className={clsx('text-primary-text gap-3')}>
+      <h3>
         {children}
       </h3>
       <span className="flex items-center gap-3">

@@ -99,7 +99,6 @@ Primitive UI elements stored under `/app/components/ui` folder. Following elemen
 - Progress
   - ProgressOuter - Container of progress bar
   - ProgressInner - Filling part of progress bar
-  - ProgressLabel - Indicator for urrent state of progress bar
   - ProgressProvider and ProgressContext - React Context to share state across different parts of Progress bar
 - Icons
   - TaskIcon - task icon for accordion header

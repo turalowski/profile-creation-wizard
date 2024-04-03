@@ -1,8 +1,4 @@
 import React, { useEffect, useState } from 'react';
-import {
-  ProgressProvider,
-  useProgressContext,
-} from '@/app/components/ui/progress/progress.context';
 import clsx from 'clsx';
 
 type SpanElementProps = React.HTMLAttributes<HTMLSpanElement>;
@@ -22,23 +18,21 @@ const ProgressOuter: React.FC<ProgressOuterProps> = ({
   ...rest
 }) => {
   return (
-    <ProgressProvider>
-      <div
-        aria-valuemin={0}
-        aria-valuemax={100}
-        className={clsx(
-          'rounded-full',
-          'bg-[#e6fdf9] ',
-          'flex items-center justify-start',
-          'h-6 w-full',
-          className
-        )}
-        role="progressbar"
-        {...rest}
-      >
-        {children}
-      </div>
-    </ProgressProvider>
+    <div
+      aria-valuemin={0}
+      aria-valuemax={100}
+      className={clsx(
+        'rounded-full',
+        'bg-[#e6fdf9] ',
+        'flex items-center justify-start',
+        'h-6 w-full',
+        className
+      )}
+      role="progressbar"
+      {...rest}
+    >
+      {children}
+    </div>
   );
 };
 

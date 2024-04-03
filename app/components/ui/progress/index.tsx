@@ -1,4 +1,4 @@
-import React, { useEffect } from 'react';
+import React, { useEffect, useState } from 'react';
 import {
   ProgressProvider,
   useProgressContext,
@@ -7,7 +7,7 @@ import clsx from 'clsx';
 
 type SpanElementProps = React.HTMLAttributes<HTMLSpanElement>;
 
-interface ProgressOuterProps extends  React.HTMLAttributes<HTMLDivElement>{
+interface ProgressOuterProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
   children: React.ReactNode;
 }
@@ -22,7 +22,7 @@ const ProgressOuter: React.FC<ProgressOuterProps> = ({
   ...rest
 }) => {
   return (
-    <ProgressProvider >
+    <ProgressProvider>
       <div
         aria-valuemin={0}
         aria-valuemax={100}
@@ -33,7 +33,7 @@ const ProgressOuter: React.FC<ProgressOuterProps> = ({
           'h-6 w-full',
           className
         )}
-      role="progressbar"
+        role="progressbar"
         {...rest}
       >
         {children}
@@ -42,7 +42,7 @@ const ProgressOuter: React.FC<ProgressOuterProps> = ({
   );
 };
 
-interface ProgressInnerProps extends  React.HTMLAttributes<HTMLDivElement>{
+interface ProgressInnerProps extends React.HTMLAttributes<HTMLDivElement> {
   value: number;
   className?: string;
   children: React.ReactNode;
@@ -59,12 +59,6 @@ const ProgressInner: React.FC<ProgressInnerProps> = ({
   children,
   ...rest
 }) => {
-  const { value: currentValue, setValue } = useProgressContext();
-
-  useEffect(() => {
-    setValue(value);
-  }, [value, setValue]);
-
   return (
     <div
       className={clsx(
@@ -75,7 +69,7 @@ const ProgressInner: React.FC<ProgressInnerProps> = ({
         `transition-width duration-1000 ease-in-out`,
         className
       )}
-      style={{ width: `${currentValue}%` }}
+      style={{ width: `${value}%` }}
       role="progressbar"
       aria-valuenow={isNaN(value) ? undefined : value}
       aria-valuetext={`${value}%`}
@@ -85,7 +79,5 @@ const ProgressInner: React.FC<ProgressInnerProps> = ({
     </div>
   );
 };
-
-
 
 export { ProgressOuter, ProgressInner };

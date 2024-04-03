@@ -1,7 +1,5 @@
-import React, { useEffect, useState } from 'react';
+import React from 'react';
 import clsx from 'clsx';
-
-type SpanElementProps = React.HTMLAttributes<HTMLSpanElement>;
 
 interface ProgressOuterProps extends React.HTMLAttributes<HTMLDivElement> {
   className?: string;
